@@ -22,6 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
       Image.asset("assets/images/default_bg.png"),
       Scaffold(
         appBar: AppBar(
+
+
+
           title: Text(
             "Islami",
             style: Theme.of(context).textTheme.bodyLarge,
