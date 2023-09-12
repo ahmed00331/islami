@@ -15,45 +15,47 @@ class _SuraDetailsState extends State<SuraDetails> {
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute
-        .of(context)
-        ?.settings
-        .arguments as SuraModel;
-    if (verses.isEmpty){loadFile(args.index);}
-
+    var args = ModalRoute.of(context)?.settings.arguments as SuraModel;
+    if (verses.isEmpty) {
+      loadFile(args.index);
+    }
 
     return Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/default_bg.png"),
                 fit: BoxFit.fill)),
         child: Scaffold(
           appBar: AppBar(
-            title: Text(args.name, style: Theme
-                .of(context)
-                .textTheme
-                .bodyLarge),
+            title:
+                Text(args.name, style: Theme.of(context).textTheme.bodyLarge),
           ),
           body: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 100,horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 100, horizontal: 10),
             child: Card(
               elevation: 12,
-              color: Color.fromARGB(240, 255, 255, 255),
+              color: const Color.fromARGB(240, 255, 255, 255),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25),side: BorderSide(color: MyThemeData.primaryColor)
-              ),
+                  borderRadius: BorderRadius.circular(25),
+                  side: BorderSide(color: MyThemeData.primaryColor)),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ListView.separated(
-                  separatorBuilder: (context, index) => Divider(color: MyThemeData.primaryColor,
-                  thickness: 2,endIndent: 30,indent: 30),
+                    separatorBuilder: (context, index) => Divider(
+                        color: MyThemeData.primaryColor,
+                        thickness: 2,
+                        endIndent: 30,
+                        indent: 30),
                     itemBuilder: (context, index) {
-                  return Center(
-                      child: Text(
-                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: MyThemeData.blackColor),
-                        textAlign: TextAlign.center,
-                          "${verses[index]}(${index+1})"));
-                },
+                      return Center(
+                          child: Text(
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(color: MyThemeData.blackColor),
+                              textAlign: TextAlign.center,
+                              "${verses[index]}(${index + 1})"));
+                    },
                     itemCount: verses.length),
               ),
             ),
@@ -67,8 +69,6 @@ class _SuraDetailsState extends State<SuraDetails> {
     List<String> lines = file.split("\n");
 
     verses = lines;
-    setState(() {
-
-    });
+    setState(() {});
   }
 }
