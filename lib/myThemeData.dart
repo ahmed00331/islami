@@ -32,7 +32,8 @@ class MyThemeData {
       ),
     ),
     scaffoldBackgroundColor: Colors.transparent,
-    appBarTheme: const AppBarTheme(
+    appBarTheme: AppBarTheme(
+      iconTheme: IconThemeData(color: blackColor),
       color: Colors.transparent,
       elevation: 0.0,
       centerTitle: true,

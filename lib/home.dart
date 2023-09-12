@@ -22,9 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
       Image.asset("assets/images/default_bg.png"),
       Scaffold(
         appBar: AppBar(
-
-
-
           title: Text(
             "Islami",
             style: Theme.of(context).textTheme.bodyLarge,
@@ -44,7 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
               backgroundColor: MyThemeData.primaryColor,
             ),
             BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/images/icon_sebha.png"),),
+              icon: ImageIcon(
+                AssetImage("assets/images/icon_sebha.png"),
+              ),
               label: "Sebha",
               backgroundColor: MyThemeData.primaryColor,
             ),
@@ -69,7 +68,12 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     ]);
   }
-  List <Widget> taps = [
-    RadioTap(),SebhaTap(),HadethTap(),QuranTap(),SettingTap(),
+
+  List<Widget> taps = [
+    QuranTap(),
+    SebhaTap(),
+    HadethTap(),
+    RadioTap(),
+    SettingTap(),
   ];
 }
