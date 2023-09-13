@@ -166,7 +166,7 @@ class QuranTap extends StatelessWidget {
               ),
               itemCount: suraName.length,
             ),
-          )
+          ),
         ],
       ),
     );

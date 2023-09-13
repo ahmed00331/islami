@@ -5,6 +5,7 @@ class SebhaTap extends StatefulWidget {
   @override
   State<SebhaTap> createState() => _SebhaTapState();
 }
+double turns = 0.0;
 
 class _SebhaTapState extends State<SebhaTap> {
   @override
@@ -13,16 +14,26 @@ class _SebhaTapState extends State<SebhaTap> {
       padding: const EdgeInsets.only(top: 10),
       child: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            InkWell(
-              onTap: () {
-                sebha();
-              },
-              child: Image.asset("assets/images/sebha.png"),
+            AnimatedRotation(
+              turns: turns,
+              duration: Duration(seconds: 1),
+              child: InkWell(
+                onTap: () {
+                  sebha();
+                  setState(() {
+                    turns+= 1/33;
+                  });
+                },
+                highlightColor: Colors.transparent,
+                hoverColor:  Colors.transparent,
+                splashColor: Colors.transparent,
+
+                child: Image.asset("assets/images/sebha.png"),
+              ),
             ),
-            SizedBox(
-              height: 20,
-            ),
+
             Text(
               "Tasbeh Number",
               style: Theme.of(context).textTheme.bodyLarge,
@@ -32,15 +43,13 @@ class _SebhaTapState extends State<SebhaTap> {
                 width: 69,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    color: MyThemeData.primaryColor),
+                    color: MyThemeData.accentColor),
                 child: Center(
                     child: Text(
                   "$counter",
                   style: Theme.of(context).textTheme.bodyLarge,
                 ))),
-            SizedBox(
-              height: 20,
-            ),
+
             Container(
                 padding: EdgeInsets.all(8),
                 decoration: BoxDecoration(

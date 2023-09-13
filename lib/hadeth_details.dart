@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:islami/myThemeData.dart';
-import 'package:islami/sura_model.dart';
+import 'package:islami/hadeth_model.dart';
 
-class SuraDetails extends StatefulWidget {
-  static const String routeName = "SuraDetails";
+import 'myThemeData.dart';
 
-  @override
-  State<SuraDetails> createState() => _SuraDetailsState();
-}
+class HadethDetails extends StatelessWidget {
+  static const String routeName = "hadeth details";
 
-class _SuraDetailsState extends State<SuraDetails> {
-  List<String> verses = [];
+  const HadethDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)?.settings.arguments as SuraModel;
-    if (verses.isEmpty) {
-      loadFile(args.index);
-    }
-
+    var args = ModalRoute.of(context)?.settings.arguments as HadethModel;
     return Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
@@ -28,7 +19,7 @@ class _SuraDetailsState extends State<SuraDetails> {
         child: Scaffold(
           appBar: AppBar(
             title: Text(
-                args.name,
+                args.title,
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge
@@ -59,21 +50,13 @@ class _SuraDetailsState extends State<SuraDetails> {
                                   .bodyMedium!
                                   .copyWith(color: MyThemeData.blackColor),
                               textAlign: TextAlign.center,
-                              "${verses[index]}(${index + 1})"));
+                              args.content[index]));
                     },
-                    itemCount: verses.length),
+                    itemCount: args.content.length),
               ),
             ),
           ),
-        ));
-  }
-
-  loadFile(int index) async {
-    String file = await rootBundle.loadString("assets/files/${index + 1}.txt");
-
-    List<String> lines = file.split("\n");
-
-    verses = lines;
-    setState(() {});
+        ),
+    );
   }
 }
