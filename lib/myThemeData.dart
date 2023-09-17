@@ -22,7 +22,7 @@ class MyThemeData {
       ),
       bodyMedium: GoogleFonts.elMessiri(
         fontSize: 25,
-        color: const Color(0xffffffff),
+        color: blackColor,
         fontWeight: FontWeight.bold,
       ),
       bodySmall: GoogleFonts.elMessiri(

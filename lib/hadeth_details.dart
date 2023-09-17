@@ -45,12 +45,9 @@ class HadethDetails extends StatelessWidget {
                       return Center(
                           child: Text(
                               textDirection: TextDirection.rtl,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyMedium!
-                                  .copyWith(color: MyThemeData.blackColor),
-                              textAlign: TextAlign.center,
-                              args.content[index]));
+                            style: Theme.of(context).textTheme.bodySmall,
+                            textAlign: TextAlign.center,
+                            args.content[index]));
                     },
                     itemCount: args.content.length),
               ),

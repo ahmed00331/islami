@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:islami/hadethTap.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/myThemeData.dart';
-import 'package:islami/quranTap.dart';
-import 'package:islami/radioTap.dart';
-import 'package:islami/sebhaTap.dart';
-import 'package:islami/settingsTap.dart';
+import 'package:islami/taps/hadethTap.dart';
+import 'package:islami/taps/settingsTap.dart';
+
+import 'taps/quranTap.dart';
+import 'taps/radioTap.dart';
+import 'taps/sebhaTap.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "home";
@@ -23,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
       Scaffold(
         appBar: AppBar(
           title: Text(
-            "Islami",
+            AppLocalizations.of(context)!.appTitle,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ),
