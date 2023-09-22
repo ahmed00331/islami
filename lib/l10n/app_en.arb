@@ -2,5 +2,16 @@
   "appTitle": "Islami",
   "suraNames": "Sura Name",
   "ahadeth": "Ahadeth",
-  "tasbehNumber": "Tasbeh Number"
+  "tasbehNumber": "Tasbeh Number",
+  "lang": "Language",
+  "arab": "Arabic",
+  "eng": "English",
+  "quran": "Quran",
+  "sebha": "Sebha",
+  "hadith": "Hadith",
+  "radio": "Radio",
+  "settings": "Settings",
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark"
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/myThemeData.dart';
+import 'package:islami/providers/my_provider.dart';
 import 'package:islami/suraDetailes.dart';
 import 'package:islami/sura_model.dart';
+import 'package:provider/provider.dart';
 
 class QuranTap extends StatelessWidget {
   List<String> suraName = [
@@ -124,29 +126,37 @@ class QuranTap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    var pro = Provider.of<MyProvider>(context);
     return Center(
       child: Column(
         children: [
           Image.asset("assets/images/qur2an_screen_logo.png"),
           Divider(
-            color: MyThemeData.primaryColor,
+            color: pro.modeApp == ThemeMode.light
+                ? MyThemeData.primaryColor
+                : MyThemeData.yellowColor,
             thickness: 2,
           ),
           Text(AppLocalizations.of(context)!.suraNames,
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyMedium!
-                  .copyWith(color: Color(0xff242424))),
+              style: pro.modeApp == ThemeMode.light
+                  ? Theme.of(context)
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(color: MyThemeData.blackColor)
+                  : Theme.of(context).textTheme.bodyMedium),
           Divider(
-            color: MyThemeData.primaryColor,
+            color: pro.modeApp == ThemeMode.light
+                ? MyThemeData.primaryColor
+                : MyThemeData.yellowColor,
             thickness: 2,
           ),
           Expanded(
             child: ListView.separated(
               separatorBuilder: (context, index) => Divider(
                 thickness: 1,
-                color: MyThemeData.primaryColor,
+                color: pro.modeApp == ThemeMode.light
+                    ? MyThemeData.primaryColor
+                    : MyThemeData.yellowColor,
                 indent: 40,
                 endIndent: 40,
               ),
@@ -159,10 +169,12 @@ class QuranTap extends StatelessWidget {
                 child: Text(
                   suraName[index],
                   textAlign: TextAlign.center,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(color: Color(0xff242424)),
+                  style: pro.modeApp == ThemeMode.light
+                      ? Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(color: MyThemeData.blackColor)
+                      : Theme.of(context).textTheme.bodyMedium,
                 ),
               ),
               itemCount: suraName.length,

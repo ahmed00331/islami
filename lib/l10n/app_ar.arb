@@ -2,5 +2,16 @@
   "appTitle": "إسلامي",
   "suraNames": "اسم السورة",
   "ahadeth": "الاحاديث",
-  "tasbehNumber": "عدد التسبيحات"
+  "tasbehNumber": "عدد التسبيحات",
+  "lang": "اللغه",
+  "arab": "عربي",
+  "eng": "إنجليزي",
+  "quran": "قرآن",
+  "sebha": "سبحة",
+  "hadith": "احاديث",
+  "radio": "راديو",
+  "settings": "الإعدادات",
+  "theme": "الوضع",
+  "light": "الفاتح",
+  "dark": "الداكن"
 }
