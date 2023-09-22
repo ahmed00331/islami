@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/myThemeData.dart';
 import 'package:islami/suraDetailes.dart';
 import 'package:islami/sura_model.dart';
@@ -132,7 +133,7 @@ class QuranTap extends StatelessWidget {
             color: MyThemeData.primaryColor,
             thickness: 2,
           ),
-          Text("Sura Name",
+          Text(AppLocalizations.of(context)!.suraNames,
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium!
@@ -166,7 +167,7 @@ class QuranTap extends StatelessWidget {
               ),
               itemCount: suraName.length,
             ),
-          )
+          ),
         ],
       ),
     );

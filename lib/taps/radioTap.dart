@@ -7,20 +7,18 @@ class RadioTap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 150),
-          child: Image.asset("assets/images/radio_image.png"),
-        ),
+        Image.asset("assets/images/radio_image.png"),
         Text("إذاعة القرآن الكريم",style: Theme.of(context).textTheme.bodyLarge),
-        SizedBox(height: 40,),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Icon(Icons.skip_previous,
-                color: MyThemeData.primaryColor, size: 80),
-            Icon(Icons.play_arrow, color: MyThemeData.primaryColor, size: 80),
-            Icon(Icons.skip_next, color: MyThemeData.primaryColor, size: 80),
+                color: MyThemeData.primaryColor, size: 50),
+            Icon(Icons.play_arrow, color: MyThemeData.primaryColor, size: 50),
+            Icon(Icons.skip_next, color: MyThemeData.primaryColor, size: 50),
           ],
         )
       ],

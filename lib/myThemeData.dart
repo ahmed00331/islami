@@ -5,6 +5,7 @@ class MyThemeData {
   static Color primaryColor = const Color(0xffB7935F);
 
   static Color blackColor = const Color(0xff242424);
+  static Color accentColor = const Color(0xffC9B497);
 
   static ThemeData lightTheme = ThemeData(
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -21,7 +22,7 @@ class MyThemeData {
       ),
       bodyMedium: GoogleFonts.elMessiri(
         fontSize: 25,
-        color: const Color(0xffffffff),
+        color: blackColor,
         fontWeight: FontWeight.bold,
       ),
       bodySmall: GoogleFonts.elMessiri(
