@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/myThemeData.dart';
+import 'package:islami/providers/my_provider.dart';
 import 'package:islami/taps/hadethTap.dart';
 import 'package:islami/taps/settingsTap.dart';
+import 'package:provider/provider.dart';
 
 import 'taps/quranTap.dart';
 import 'taps/radioTap.dart';
@@ -17,16 +19,23 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int index = 0;
-
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<MyProvider>(context);
     return Stack(children: [
-      Image.asset("assets/images/default_bg.png"),
+      Image.asset(pro.modeApp == ThemeMode.light
+          ? "assets/images/default_bg.png"
+          : "assets/images/bg.png"),
       Scaffold(
         appBar: AppBar(
           title: Text(
             AppLocalizations.of(context)!.appTitle,
-            style: Theme.of(context).textTheme.bodyLarge,
+            style: pro.modeApp == ThemeMode.light
+                ? Theme.of(context).textTheme.bodyLarge
+                : Theme.of(context)
+                    .textTheme
+                    .bodyLarge!
+                    .copyWith(color: Colors.white),
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -39,30 +48,40 @@ class _HomeScreenState extends State<HomeScreen> {
           items: [
             BottomNavigationBarItem(
               icon: ImageIcon(AssetImage("assets/images/icon_quran.png")),
-              label: "Quraan",
-              backgroundColor: MyThemeData.primaryColor,
+              label: AppLocalizations.of(context)!.quran,
+              backgroundColor: pro.modeApp == ThemeMode.light
+                  ? MyThemeData.primaryColor
+                  : MyThemeData.darkPrimaryColor,
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(
                 AssetImage("assets/images/icon_sebha.png"),
               ),
-              label: "Sebha",
-              backgroundColor: MyThemeData.primaryColor,
+              label: AppLocalizations.of(context)!.sebha,
+              backgroundColor: pro.modeApp == ThemeMode.light
+                  ? MyThemeData.primaryColor
+                  : MyThemeData.darkPrimaryColor,
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(AssetImage("assets/images/icon_hadeth.png")),
-              label: "Hadeth",
-              backgroundColor: MyThemeData.primaryColor,
+              label: AppLocalizations.of(context)!.ahadeth,
+              backgroundColor: pro.modeApp == ThemeMode.light
+                  ? MyThemeData.primaryColor
+                  : MyThemeData.darkPrimaryColor,
             ),
             BottomNavigationBarItem(
               icon: ImageIcon(AssetImage("assets/images/icon_radio.png")),
-              label: "Radio",
-              backgroundColor: MyThemeData.primaryColor,
+              label: AppLocalizations.of(context)!.radio,
+              backgroundColor: pro.modeApp == ThemeMode.light
+                  ? MyThemeData.primaryColor
+                  : MyThemeData.darkPrimaryColor,
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.settings),
-              label: "Settings",
-              backgroundColor: MyThemeData.primaryColor,
+              label: AppLocalizations.of(context)!.settings,
+              backgroundColor: pro.modeApp == ThemeMode.light
+                  ? MyThemeData.primaryColor
+                  : MyThemeData.darkPrimaryColor,
             ),
           ],
         ),

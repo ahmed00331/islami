@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/myThemeData.dart';
+import 'package:islami/providers/my_provider.dart';
+import 'package:provider/provider.dart';
 
 class SebhaTap extends StatefulWidget {
+  const SebhaTap({super.key});
+
   @override
   State<SebhaTap> createState() => _SebhaTapState();
 }
@@ -12,6 +16,7 @@ var turns = 0.0;
 class _SebhaTapState extends State<SebhaTap> {
   @override
   Widget build(BuildContext context) {
+    var pro = Provider.of<MyProvider>(context);
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -27,7 +32,9 @@ class _SebhaTapState extends State<SebhaTap> {
                     fit: BoxFit.fitWidth,
                     alignment: Alignment.topLeft,
                     image: AssetImage(
-                      "assets/images/head_sebha_logo.png",
+                      pro.modeApp == ThemeMode.light
+                          ? "assets/images/head_sebha_logo.png"
+                          : "assets/images/head_sebha_dark.png",
                     ),
                   ),
                 ),
@@ -46,7 +53,9 @@ class _SebhaTapState extends State<SebhaTap> {
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
                 child: Image.asset(
-                  "assets/images/body_sebha_logo.png",
+                  pro.modeApp == ThemeMode.light
+                      ? "assets/images/body_sebha_logo.png"
+                      : "assets/images/body_sebha_dark.png",
                 ),
               ),
             ),
@@ -55,7 +64,12 @@ class _SebhaTapState extends State<SebhaTap> {
             ),
             Text(
               AppLocalizations.of(context)!.tasbehNumber,
-              style: Theme.of(context).textTheme.bodyLarge,
+              style: pro.modeApp == ThemeMode.light
+                  ? Theme.of(context).textTheme.bodyLarge
+                  : Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(color: Colors.white),
             ),
             SizedBox(
               height: 30,
@@ -65,11 +79,18 @@ class _SebhaTapState extends State<SebhaTap> {
                 width: 69,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    color: MyThemeData.accentColor),
+                    color: pro.modeApp == ThemeMode.light
+                        ? MyThemeData.accentColor
+                        : MyThemeData.darkPrimaryColor),
                 child: Center(
                     child: Text(
                   "$counter",
-                  style: Theme.of(context).textTheme.bodyLarge,
+                  style: pro.modeApp == ThemeMode.light
+                      ? Theme.of(context).textTheme.bodyLarge
+                      : Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(color: Colors.white),
                 ))),
             SizedBox(
               height: 30,
@@ -79,10 +100,20 @@ class _SebhaTapState extends State<SebhaTap> {
                 decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(50),
-                    color: MyThemeData.primaryColor),
+                    color: pro.modeApp == ThemeMode.light
+                        ? MyThemeData.primaryColor
+                        : MyThemeData.yellowColor),
                 child: Text(
                   tsbeh[index],
-                  style: Theme.of(context).textTheme.bodyMedium,
+                  style: pro.modeApp == ThemeMode.light
+                      ? Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(color: Color(0xffffffff))
+                      : Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(color: MyThemeData.darkPrimaryColor),
                 )),
           ],
         ),
