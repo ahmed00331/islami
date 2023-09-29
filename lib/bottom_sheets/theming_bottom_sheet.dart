@@ -5,14 +5,14 @@ import 'package:islami/providers/my_provider.dart';
 import 'package:provider/provider.dart';
 
 class ThemingBottomSheet extends StatelessWidget {
-  ThemingBottomSheet({super.key});
+  const ThemingBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
     var pro = Provider.of<MyProvider>(context);
     return Container(
       height: MediaQuery.of(context).size.height * .2,
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       child: Column(
         children: [
           InkWell(
@@ -26,9 +26,9 @@ class ThemingBottomSheet extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: pro.modeApp == ThemeMode.light
                           ? MyThemeData.primaryColor
-                          : Colors.black54),
+                          : Colors.white),
                 ),
-                Spacer(),
+                const Spacer(),
                 pro.modeApp == ThemeMode.light
                     ? Icon(
                         Icons.check,
@@ -37,7 +37,7 @@ class ThemingBottomSheet extends StatelessWidget {
                             ? MyThemeData.primaryColor
                             : Colors.black54,
                       )
-                    : SizedBox.shrink()
+                    : const SizedBox.shrink()
               ],
             ),
           ),
@@ -52,16 +52,16 @@ class ThemingBottomSheet extends StatelessWidget {
                         color: pro.modeApp == ThemeMode.dark
                             ? MyThemeData.yellowColor
                             : Colors.black54)),
-                Spacer(),
+                const Spacer(),
                 pro.modeApp == ThemeMode.light
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : Icon(
                         Icons.check,
                         size: 30,
                         color: pro.modeApp == ThemeMode.dark
                             ? MyThemeData.yellowColor
                             : Colors.black54,
-                      )
+                      ),
               ],
             ),
           ),

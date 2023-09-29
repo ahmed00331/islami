@@ -10,8 +10,16 @@ class MyProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  changeTheme(ThemeMode mode) {
+  void changeTheme(ThemeMode mode) {
     modeApp = mode;
     notifyListeners();
+  }
+
+  String getBackground() {
+    if (modeApp == ThemeMode.light) {
+      return "assets/images/default_bg.png";
+    } else {
+      return "assets/images/bg.png";
+    }
   }
 }

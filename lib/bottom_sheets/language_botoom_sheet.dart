@@ -12,7 +12,7 @@ class LanguageBottomSheet extends StatelessWidget {
     var pro = Provider.of<MyProvider>(context);
     return Container(
       height: MediaQuery.of(context).size.height * .2,
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       child: Column(
         children: [
           InkWell(
@@ -28,7 +28,7 @@ class LanguageBottomSheet extends StatelessWidget {
                           ? MyThemeData.primaryColor
                           : Colors.black54),
                 ),
-                Spacer(),
+                const Spacer(),
                 pro.languageCode == "en"
                     ? Icon(
                         Icons.check,
@@ -37,7 +37,7 @@ class LanguageBottomSheet extends StatelessWidget {
                             ? MyThemeData.primaryColor
                             : Colors.black54,
                       )
-                    : SizedBox.shrink()
+                    : const SizedBox.shrink()
               ],
             ),
           ),
@@ -52,9 +52,9 @@ class LanguageBottomSheet extends StatelessWidget {
                         color: pro.languageCode == "ar"
                             ? MyThemeData.primaryColor
                             : Colors.black54)),
-                Spacer(),
+                const Spacer(),
                 pro.languageCode == "en"
-                    ? SizedBox.shrink()
+                    ? const SizedBox.shrink()
                     : Icon(
                         Icons.check,
                         size: 30,

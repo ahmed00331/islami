@@ -23,9 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     var pro = Provider.of<MyProvider>(context);
     return Stack(children: [
-      Image.asset(pro.modeApp == ThemeMode.light
-          ? "assets/images/default_bg.png"
-          : "assets/images/bg.png"),
+      Image.asset(
+        pro.getBackground(),
+      ),
       Scaffold(
         appBar: AppBar(
           title: Text(
@@ -47,14 +47,14 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/images/icon_quran.png")),
+              icon: const ImageIcon(AssetImage("assets/images/icon_quran.png")),
               label: AppLocalizations.of(context)!.quran,
               backgroundColor: pro.modeApp == ThemeMode.light
                   ? MyThemeData.primaryColor
                   : MyThemeData.darkPrimaryColor,
             ),
             BottomNavigationBarItem(
-              icon: ImageIcon(
+              icon: const ImageIcon(
                 AssetImage("assets/images/icon_sebha.png"),
               ),
               label: AppLocalizations.of(context)!.sebha,
@@ -63,21 +63,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   : MyThemeData.darkPrimaryColor,
             ),
             BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/images/icon_hadeth.png")),
+              icon:
+                  const ImageIcon(AssetImage("assets/images/icon_hadeth.png")),
               label: AppLocalizations.of(context)!.ahadeth,
               backgroundColor: pro.modeApp == ThemeMode.light
                   ? MyThemeData.primaryColor
                   : MyThemeData.darkPrimaryColor,
             ),
             BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage("assets/images/icon_radio.png")),
+              icon: const ImageIcon(AssetImage("assets/images/icon_radio.png")),
               label: AppLocalizations.of(context)!.radio,
               backgroundColor: pro.modeApp == ThemeMode.light
                   ? MyThemeData.primaryColor
                   : MyThemeData.darkPrimaryColor,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
+              icon: const Icon(Icons.settings),
               label: AppLocalizations.of(context)!.settings,
               backgroundColor: pro.modeApp == ThemeMode.light
                   ? MyThemeData.primaryColor
@@ -92,9 +93,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> taps = [
     QuranTap(),
-    SebhaTap(),
-    HadethTap(),
-    RadioTap(),
-    SettingTap(),
+    const SebhaTap(),
+    const HadethTap(),
+    const RadioTap(),
+    const SettingTap(),
   ];
 }

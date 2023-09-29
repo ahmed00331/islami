@@ -90,7 +90,7 @@ class MyThemeData {
       ),
     ),
     scaffoldBackgroundColor: Colors.transparent,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       iconTheme: IconThemeData(color: Colors.white),
       color: Colors.transparent,
       elevation: 0.0,

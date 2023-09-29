@@ -59,7 +59,7 @@ class _SebhaTapState extends State<SebhaTap> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Text(
@@ -71,7 +71,7 @@ class _SebhaTapState extends State<SebhaTap> {
                       .bodyLarge!
                       .copyWith(color: Colors.white),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Container(
@@ -92,11 +92,11 @@ class _SebhaTapState extends State<SebhaTap> {
                           .bodyLarge!
                           .copyWith(color: Colors.white),
                 ))),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Container(
-                padding: EdgeInsets.all(8),
+                padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
                     borderRadius: BorderRadius.circular(50),
@@ -109,7 +109,7 @@ class _SebhaTapState extends State<SebhaTap> {
                       ? Theme.of(context)
                           .textTheme
                           .bodyMedium!
-                          .copyWith(color: Color(0xffffffff))
+                          .copyWith(color: const Color(0xffffffff))
                       : Theme.of(context)
                           .textTheme
                           .bodyMedium!
