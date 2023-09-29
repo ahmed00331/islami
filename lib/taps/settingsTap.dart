@@ -29,8 +29,8 @@ class _SettingTapState extends State<SettingTap> {
               languageBottomSheet();
             },
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 18),
-              padding: EdgeInsets.symmetric(horizontal: 18),
+              margin: const EdgeInsets.symmetric(horizontal: 18),
+              padding: const EdgeInsets.symmetric(horizontal: 18),
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
@@ -41,7 +41,7 @@ class _SettingTapState extends State<SettingTap> {
                   : AppLocalizations.of(context)!.arab),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Text(AppLocalizations.of(context)!.theme),
@@ -50,8 +50,8 @@ class _SettingTapState extends State<SettingTap> {
               themingBottomSheet();
             },
             child: Container(
-              margin: EdgeInsets.symmetric(horizontal: 18),
-              padding: EdgeInsets.symmetric(horizontal: 18),
+              margin: const EdgeInsets.symmetric(horizontal: 18),
+              padding: const EdgeInsets.symmetric(horizontal: 18),
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
@@ -70,7 +70,7 @@ class _SettingTapState extends State<SettingTap> {
   languageBottomSheet() {
     showModalBottomSheet(
       context: context,
-      shape: OutlineInputBorder(
+      shape: const OutlineInputBorder(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(12), topRight: Radius.circular(12)),
           borderSide: BorderSide(color: Colors.transparent)),
@@ -81,10 +81,10 @@ class _SettingTapState extends State<SettingTap> {
   themingBottomSheet() {
     showModalBottomSheet(
       context: context,
-      shape: OutlineInputBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12), topRight: Radius.circular(12)),
-          borderSide: BorderSide(color: Colors.transparent)),
+        shape: const OutlineInputBorder(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(12), topRight: Radius.circular(12)),
+            borderSide: BorderSide(color: Colors.transparent)),
         builder: (context) => ThemingBottomSheet());
   }
 }

@@ -17,9 +17,9 @@ class HadethDetails extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage(pro.modeApp == ThemeMode.light
-                  ? "assets/images/default_bg.png"
-                  : "assets/images/bg.png"),
+              image: AssetImage(
+                pro.getBackground(),
+              ),
               fit: BoxFit.fill)),
       child: Scaffold(
         appBar: AppBar(
@@ -36,7 +36,7 @@ class HadethDetails extends StatelessWidget {
           child: Card(
             elevation: 12,
             color: pro.modeApp == ThemeMode.light
-                ? Color.fromARGB(240, 255, 255, 255)
+                ? const Color.fromARGB(240, 255, 255, 255)
                 : MyThemeData.darkPrimaryColor,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),

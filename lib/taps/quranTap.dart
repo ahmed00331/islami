@@ -152,6 +152,7 @@ class QuranTap extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
+              physics: const BouncingScrollPhysics(),
               separatorBuilder: (context, index) => Divider(
                 thickness: 1,
                 color: pro.modeApp == ThemeMode.light
@@ -163,20 +164,20 @@ class QuranTap extends StatelessWidget {
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
                   Navigator.pushNamed(context, SuraDetails.routeName,
-                    arguments: SuraModel(suraName[index], index)
-                  );
-                },
-                child: Text(
-                  suraName[index],
-                  textAlign: TextAlign.center,
-                  style: pro.modeApp == ThemeMode.light
-                      ? Theme.of(context)
+                          arguments: SuraModel(suraName[index], index)
+                      );
+                    },
+                    child: Text(
+                      suraName[index],
+                      textAlign: TextAlign.center,
+                      style: pro.modeApp == ThemeMode.light
+                          ? Theme.of(context)
                           .textTheme
                           .bodyMedium!
                           .copyWith(color: MyThemeData.blackColor)
-                      : Theme.of(context).textTheme.bodyMedium,
-                ),
-              ),
+                          : Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ),
               itemCount: suraName.length,
             ),
           ),
