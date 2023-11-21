@@ -11,53 +11,61 @@ class SebhaTap extends StatefulWidget {
   State<SebhaTap> createState() => _SebhaTapState();
 }
 
-var turns = 0.0;
-
 class _SebhaTapState extends State<SebhaTap> {
+  var turns = 0.0;
+  List<String> tsbeh = [
+    "سبحان الله",
+    "الحمدلله",
+    "الله اكبر",
+    "لا حول ولا قوة الا بالله",
+    "لا إله إلا الله"
+  ];
+
   @override
   Widget build(BuildContext context) {
+    var mediaQuery = MediaQuery.of(context).size;
     var pro = Provider.of<MyProvider>(context);
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
-            Transform.rotate(
-              angle: 5.6,
-              child: Container(
-                height: 105,
-                width: 79,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.fitWidth,
-                    alignment: Alignment.topLeft,
-                    image: AssetImage(
-                      pro.modeApp == ThemeMode.light
-                          ? "assets/images/head_sebha_logo.png"
-                          : "assets/images/head_sebha_dark.png",
+            Stack(
+              alignment: Alignment.topCenter,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(left: 40),
+                  child: Image.asset(
+                    pro.modeApp == ThemeMode.light
+                        ? 'assets/images/head_sebha_logo.png'
+                        : 'assets/images/head_sebha_dark.png',
+                    width: mediaQuery.width / 5.64,
+                    height: mediaQuery.height / 8.285,
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 72),
+                  child: AnimatedRotation(
+                    duration: Duration(seconds: 1),
+                    turns: turns,
+                    child: GestureDetector(
+                      onTap: () {
+                        sebha();
+                        setState(() {
+                          turns += 1 / 33;
+                        });
+                      },
+                      child: Image.asset(
+                        pro.modeApp == ThemeMode.light
+                            ? 'assets/images/body_sebha_logo.png'
+                            : 'assets/images/body_sebha_dark.png',
+                        width: mediaQuery.width / 1.776,
+                        height: mediaQuery.height / 3.718,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ),
-            AnimatedRotation(
-              turns: turns,
-              duration: const Duration(seconds: 1),
-              child: InkWell(
-                onTap: () {
-                  sebha();
-                  setState(() {
-                    turns += 1 / 33;
-                  });
-                },
-                highlightColor: Colors.transparent,
-                splashColor: Colors.transparent,
-                child: Image.asset(
-                  pro.modeApp == ThemeMode.light
-                      ? "assets/images/body_sebha_logo.png"
-                      : "assets/images/body_sebha_dark.png",
-                ),
-              ),
+              ],
             ),
             const SizedBox(
               height: 30,
@@ -67,9 +75,9 @@ class _SebhaTapState extends State<SebhaTap> {
               style: pro.modeApp == ThemeMode.light
                   ? Theme.of(context).textTheme.bodyLarge
                   : Theme.of(context)
-                      .textTheme
-                      .bodyLarge!
-                      .copyWith(color: Colors.white),
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(color: Colors.white),
             ),
             const SizedBox(
               height: 30,
@@ -84,14 +92,14 @@ class _SebhaTapState extends State<SebhaTap> {
                         : MyThemeData.darkPrimaryColor),
                 child: Center(
                     child: Text(
-                  "$counter",
-                  style: pro.modeApp == ThemeMode.light
-                      ? Theme.of(context).textTheme.bodyLarge
-                      : Theme.of(context)
+                      "$counter",
+                      style: pro.modeApp == ThemeMode.light
+                          ? Theme.of(context).textTheme.bodyLarge
+                          : Theme.of(context)
                           .textTheme
                           .bodyLarge!
                           .copyWith(color: Colors.white),
-                ))),
+                    ))),
             const SizedBox(
               height: 30,
             ),
@@ -107,13 +115,13 @@ class _SebhaTapState extends State<SebhaTap> {
                   tsbeh[index],
                   style: pro.modeApp == ThemeMode.light
                       ? Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(color: const Color(0xffffffff))
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(color: const Color(0xffffffff))
                       : Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(color: MyThemeData.darkPrimaryColor),
+                      .textTheme
+                      .bodyMedium!
+                      .copyWith(color: MyThemeData.darkPrimaryColor),
                 )),
           ],
         ),
@@ -124,32 +132,17 @@ class _SebhaTapState extends State<SebhaTap> {
   int counter = 0;
   int index = 0;
 
-  List<String> tsbeh = [
-    "سبحان الله",
-    "الحمدلله",
-    "الله اكبر",
-    "لا حول ولا قوة الا بالله",
-    "لا إله إلا الله"
-  ];
-
   void sebha() {
     setState(() {
-      counter++;
-      if (index == 0 && counter == 33) {
-        index = 1;
+      if (counter == 32) {
         counter = 0;
-      } else if (index == 1 && counter == 33) {
-        index = 2;
-        counter = 0;
-      } else if (index == 2 && counter == 33) {
-        index = 3;
-        counter = 0;
-      } else if (index == 3 && counter == 33) {
-        index = 4;
-        counter = 0;
-      } else if (index == 4 && counter == 33) {
-        index = 0;
-        counter = 0;
+        if (index == tsbeh.length - 1) {
+          index = 0;
+        } else {
+          index++;
+        }
+      } else {
+        counter++;
       }
     });
   }
