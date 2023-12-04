@@ -9,18 +9,6 @@ class MyThemeData {
   static Color yellowColor = const Color(0xffFACC1D);
 
   static ThemeData lightTheme = ThemeData(
-    colorScheme: ColorScheme(
-        brightness: Brightness.light,
-        primary: primaryColor,
-        onPrimary: Colors.white,
-        secondary: blackColor,
-        onSecondary: Colors.white,
-        error: Colors.red,
-        onError: Colors.white,
-        background: primaryColor,
-        onBackground: Colors.white,
-        surface: primaryColor,
-        onSurface: Colors.white),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: primaryColor,
       selectedItemColor: blackColor,

@@ -1,45 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:islami/myThemeData.dart';
-import 'package:islami/providers/my_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:islami/api/api_manager.dart';
+import 'package:islami/taps/radio_widget.dart';
 
 class RadioTap extends StatelessWidget {
-  const RadioTap({super.key});
+  RadioTap({super.key});
+
+  String currentState = 'pause';
 
   @override
   Widget build(BuildContext context) {
-    var pro = Provider.of<MyProvider>(context);
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image.asset("assets/images/radio_image.png"),
-        Text("إذاعة القرآن الكريم",
-            style: pro.modeApp == ThemeMode.light
-                ? Theme.of(context)
-                    .textTheme
-                    .bodyMedium!
-                    .copyWith(color: MyThemeData.blackColor)
-                : Theme.of(context).textTheme.bodyMedium),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Icon(Icons.skip_previous,
-                color: pro.modeApp == ThemeMode.light
-                    ? MyThemeData.primaryColor
-                    : MyThemeData.yellowColor,
-                size: 50),
-            Icon(Icons.play_arrow,
-                color: pro.modeApp == ThemeMode.light
-                    ? MyThemeData.primaryColor
-                    : MyThemeData.yellowColor,
-                size: 50),
-            Icon(Icons.skip_next,
-                color: pro.modeApp == ThemeMode.light
-                    ? MyThemeData.primaryColor
-                    : MyThemeData.yellowColor,
-                size: 50),
-          ],
-        )
+        Expanded(child: Image.asset("assets/images/radio_image.png")),
+        FutureBuilder(
+          future: ApiManager.getApiData(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return const Center(
+                child: Text("there was an error try again later"),
+              );
+            } else if (snapshot.connectionState == ConnectionState.waiting) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            var radio = snapshot.data?.radios ?? [];
+            return Expanded(
+              child: ListView.builder(
+                itemBuilder: (context, index) {
+                  return RadioWidget(
+                    radioData: radio[index],
+                  );
+                },
+                physics: const PageScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemCount: radio.length,
+              ),
+            );
+          },
+        ),
       ],
     );
   }

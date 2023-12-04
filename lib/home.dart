@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
     QuranTap(),
     const SebhaTap(),
     const HadethTap(),
-    const RadioTap(),
+    RadioTap(),
     const SettingTap(),
   ];
 }

@@ -7,9 +7,10 @@ import 'package:islami/providers/my_provider.dart';
 import 'package:islami/suraDetailes.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(ChangeNotifierProvider(
-      create: (context) => MyProvider(), child: const MyApp()));
+      create: (context) => MyProvider()..init(), child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
