@@ -13,7 +13,7 @@ class SebhaTap extends StatefulWidget {
 
 class _SebhaTapState extends State<SebhaTap> {
   var turns = 0.0;
-  List<String> tsbeh = [
+  List<String> azkar = [
     "سبحان الله",
     "الحمدلله",
     "الله اكبر",
@@ -48,20 +48,12 @@ class _SebhaTapState extends State<SebhaTap> {
                   child: AnimatedRotation(
                     duration: Duration(seconds: 1),
                     turns: turns,
-                    child: GestureDetector(
-                      onTap: () {
-                        sebha();
-                        setState(() {
-                          turns += 1 / 33;
-                        });
-                      },
-                      child: Image.asset(
-                        pro.modeApp == ThemeMode.light
-                            ? 'assets/images/body_sebha_logo.png'
-                            : 'assets/images/body_sebha_dark.png',
-                        width: mediaQuery.width / 1.776,
-                        height: mediaQuery.height / 3.718,
-                      ),
+                    child: Image.asset(
+                      pro.modeApp == ThemeMode.light
+                          ? 'assets/images/body_sebha_logo.png'
+                          : 'assets/images/body_sebha_dark.png',
+                      width: mediaQuery.width / 1.776,
+                      height: mediaQuery.height / 3.718,
                     ),
                   ),
                 ),
@@ -111,17 +103,23 @@ class _SebhaTapState extends State<SebhaTap> {
                     color: pro.modeApp == ThemeMode.light
                         ? MyThemeData.primaryColor
                         : MyThemeData.yellowColor),
-                child: Text(
-                  tsbeh[index],
-                  style: pro.modeApp == ThemeMode.light
-                      ? Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(color: const Color(0xffffffff))
-                      : Theme.of(context)
-                      .textTheme
-                      .bodyMedium!
-                      .copyWith(color: MyThemeData.darkPrimaryColor),
+                child: InkWell(
+                  onTap: () {
+                    sebha();
+                    setState(() {});
+                  },
+                  child: Text(
+                    azkar[index],
+                    style: pro.modeApp == ThemeMode.light
+                        ? Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(color: const Color(0xffffffff))
+                        : Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(color: MyThemeData.darkPrimaryColor),
+                  ),
                 )),
           ],
         ),
@@ -136,7 +134,7 @@ class _SebhaTapState extends State<SebhaTap> {
     setState(() {
       if (counter == 32) {
         counter = 0;
-        if (index == tsbeh.length - 1) {
+        if (index == azkar.length - 1) {
           index = 0;
         } else {
           index++;
@@ -144,6 +142,7 @@ class _SebhaTapState extends State<SebhaTap> {
       } else {
         counter++;
       }
+      turns += 1 / 33;
     });
   }
 }

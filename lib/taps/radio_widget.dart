@@ -7,9 +7,9 @@ import '../myThemeData.dart';
 import '../providers/my_provider.dart';
 
 class RadioWidget extends StatefulWidget {
-  RadioData radioData;
+  final RadioData radioData;
 
-  RadioWidget({required this.radioData, super.key});
+  const RadioWidget({required this.radioData, super.key});
 
   @override
   State<RadioWidget> createState() => _RadioWidgetState();
@@ -17,9 +17,6 @@ class RadioWidget extends StatefulWidget {
 
 class _RadioWidgetState extends State<RadioWidget> {
   final AudioPlayer audioPlayer = AudioPlayer();
-
-  String currentState = "pause";
-
   @override
   Widget build(BuildContext context) {
     var pro = Provider.of<MyProvider>(context);
@@ -43,17 +40,23 @@ class _RadioWidgetState extends State<RadioWidget> {
             children: [
               InkWell(
                 onTap: () {
-                  currentState == 'pause' ? 'play' : 'pause';
                   setState(() {
-                    if (currentState == 'pause') {
-                      audioPlayer.pause();
-                    } else {
-                      audioPlayer.play(UrlSource(widget.radioData.url!));
-                    }
+                    audioPlayer.play(UrlSource(widget.radioData.url!));
                   });
                 },
-                child: Icon(
-                    currentState == 'pause' ? Icons.play_arrow : Icons.pause,
+                child: Icon(Icons.play_arrow,
+                    color: pro.modeApp == ThemeMode.light
+                        ? MyThemeData.primaryColor
+                        : MyThemeData.yellowColor,
+                    size: 50),
+              ),
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    audioPlayer.pause();
+                  });
+                },
+                child: Icon(Icons.pause,
                     color: pro.modeApp == ThemeMode.light
                         ? MyThemeData.primaryColor
                         : MyThemeData.yellowColor,
